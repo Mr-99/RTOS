@@ -18,7 +18,8 @@ int task_flag2;
 int task_flag3;
 int task_flag4;
 //信号量
-tSem sem;//定义一个信号量
+tSem sem1;//定义第一个信号量
+tSem sem2;//定义第二个信号量
 void task1DestroyFunc(void * param)
 {
  task_flag1 = 0;
@@ -26,10 +27,10 @@ void task1DestroyFunc(void * param)
 void task1(void *para)
 {
 	tSetSysTickPeriod(10);//设置最小时间单位
-  tSemInit(&sem,1,10);
+  tSemInit(&sem1,0,10);
 	for(;;)
 	  { 
-
+      tSemWait(&sem1,0);//等待资源
 			task_flag1 = 0;
 //tTaskSchedEnable();
 //			//模拟汇编过程（读-改-写入）
@@ -40,13 +41,14 @@ void task1(void *para)
 //			//end
 //tTaskSchedDisable();
 			task_flag1 = 1;
-			  tTaskDelay(1);;
+			tTaskDelay(1);;
 			
 		}
 
 }
 void task2(void *para)
 {
+	tError error;
 	for(;;)
 	  {
 
@@ -56,14 +58,16 @@ void task2(void *para)
 			task_flag2 = 1;
 		  tTaskDelay(1);
 			//tTaskWakeUp(&tTask1);
-
+     tSemNotify(&sem1);//释放一个资源
+		 error = tSemNoWaitGet(&sem1);//无等待获取资源
 	  }
 }
 void task3(void *para)
 {
+	tSemInit(&sem2,0,0);
 	for(;;)
 	  {
-
+      tSemWait(&sem2,10);
 			task_flag3 = 0;
 			tTaskDelay(1);
 			task_flag3 = 1;
