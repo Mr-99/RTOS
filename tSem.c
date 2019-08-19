@@ -47,7 +47,8 @@ tError tSemNoWaitGet(tSem * sem)//获取资源
 						return tErrorResourceUnavaliable;
 						 }
 }
-void tSemNotify(tSem * sem)//释放资源
+//@释放资源
+void tSemNotify(tSem * sem)
 {
  uint32_t status = tTaskEnterCritical();//保护现场
 	if(tEventWaitCount(&sem->event) > 0)//如果当前事件中有任务
@@ -67,4 +68,26 @@ void tSemNotify(tSem * sem)//释放资源
 			 }
 		 }
 	tTaskExitCritical(status);//恢复现场	
+}
+//@查询消息
+void tSemGetInfo(tSem * sem,tSemInfo * info)
+{
+ uint32_t status = tTaskEnterCritical();//保护现场
+	info->count = sem->count;
+	info->maxCount = sem->maxCount;
+	info->taskCount = tEventWaitCount(&sem->event);
+ tTaskExitCritical(status);//恢复现场	
+}
+//@删除信号量
+uint32_t tSemDestroy(tSem * sem)
+{
+ uint32_t status = tTaskEnterCritical();//保护现场
+ uint32_t count = tEventRemoveAll(&sem->event,(void *)0,tErrorDel);
+ sem->count = 0;
+ tTaskExitCritical(status);//恢复现场	
+  if(count > 0)
+		{
+       tTaskSched();
+		}
+	return count;
 }

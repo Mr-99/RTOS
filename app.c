@@ -28,9 +28,9 @@ void task1(void *para)
 {
 	tSetSysTickPeriod(10);//设置最小时间单位
   tSemInit(&sem1,0,10);
+	tSemWait(&sem1,0);//等待车位空出来
 	for(;;)
 	  { 
-      tSemWait(&sem1,0);//等待资源
 			task_flag1 = 0;
 //tTaskSchedEnable();
 //			//模拟汇编过程（读-改-写入）
@@ -58,8 +58,8 @@ void task2(void *para)
 			task_flag2 = 1;
 		  tTaskDelay(1);
 			//tTaskWakeUp(&tTask1);
-     tSemNotify(&sem1);//释放一个资源
-		 error = tSemNoWaitGet(&sem1);//无等待获取资源
+//     tSemNotify(&sem1);//释放一个资源
+//		 error = tSemNoWaitGet(&sem1);//无等待获取资源
 	  }
 }
 void task3(void *para)
@@ -77,6 +77,8 @@ void task3(void *para)
 }
 void task4(void *para)
 {
+	tSemInfo semInfo;
+	int destroyed = 0;
 	for(;;)
 	  {
 
@@ -84,6 +86,12 @@ void task4(void *para)
 			tTaskDelay(1);
 			task_flag4 = 1;
 		  tTaskDelay(1);
+			if(!destroyed)//如果没有被删除
+			{
+			tSemGetInfo(&sem1,&semInfo);
+			tSemDestroy(&sem1);
+			destroyed = 1;//设置删除标记
+			}
 	  }
 }
 void tInitApp(void)

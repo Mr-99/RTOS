@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\RTOS.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\RTOS.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu Aug 15 13:15:05 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon Aug 19 10:44:59 2019
 <BR><P>
 <H3>Maximum Stack Usage =         72 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -399,7 +399,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[63]"></a>tBitmapClear</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, tbitmap.o(i.tBitmapClear))
-<BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
+<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
 </UL>
 
 <P><STRONG><a name="[46]"></a>tBitmapGetFirstSet</STRONG> (Thumb, 86 bytes, Stack size 4 bytes, tbitmap.o(i.tBitmapGetFirstSet))
@@ -421,7 +421,7 @@ Global Symbols
 
 <P><STRONG><a name="[61]"></a>tBitmapSet</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, tbitmap.o(i.tBitmapSet))
 <BR><BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskInit
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
 </UL>
 
 <P><STRONG><a name="[48]"></a>tEventInit</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, tevent.o(i.tEventInit))
@@ -429,51 +429,52 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemInit
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemInit
 </UL>
 
-<P><STRONG><a name="[4a]"></a>tEventRemoveTask</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, tevent.o(i.tEventRemoveTask))
+<P><STRONG><a name="[4a]"></a>tEventRemoveAll</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, tevent.o(i.tEventRemoveAll))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = tEventRemoveAll &rArr; tTimeTaskWakeUp
+</UL>
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemoveFirst
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWakeUp
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
+</UL>
+<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemDestroy
+</UL>
+
+<P><STRONG><a name="[51]"></a>tEventRemoveTask</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, tevent.o(i.tEventRemoveTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = tEventRemoveTask
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemove
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
 </UL>
 
-<P><STRONG><a name="[4e]"></a>tEventWait</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, tevent.o(i.tEventWait))
+<P><STRONG><a name="[53]"></a>tEventWait</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, tevent.o(i.tEventWait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = tEventWait &rArr; tTimeTaskWait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddLast
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWait
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddLast
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWait
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemWait
 </UL>
 
-<P><STRONG><a name="[52]"></a>tEventWaitCount</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, tevent.o(i.tEventWaitCount))
+<P><STRONG><a name="[57]"></a>tEventWaitCount</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, tevent.o(i.tEventWaitCount))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = tEventWaitCount
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNotify
-</UL>
-
-<P><STRONG><a name="[54]"></a>tEventWakeUp</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, tevent.o(i.tEventWakeUp))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = tEventWakeUp &rArr; tTimeTaskWakeUp
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemoveFirst
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWakeUp
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
-</UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNotify
+<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemGetInfo
 </UL>
 
 <P><STRONG><a name="[43]"></a>tInitApp</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, app.o(i.tInitApp))
@@ -486,19 +487,20 @@ Global Symbols
 
 <P><STRONG><a name="[60]"></a>tListAddFirst</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, tlist.o(i.tListAddFirst))
 <BR><BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskInit
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
 </UL>
 
-<P><STRONG><a name="[50]"></a>tListAddLast</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, tlist.o(i.tListAddLast))
-<BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWait
+<P><STRONG><a name="[55]"></a>tListAddLast</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, tlist.o(i.tListAddLast))
+<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWait
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
 </UL>
 
-<P><STRONG><a name="[53]"></a>tListCount</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, tlist.o(i.tListCount))
-<BR><BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
+<P><STRONG><a name="[4c]"></a>tListCount</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, tlist.o(i.tListCount))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
 </UL>
 
 <P><STRONG><a name="[5e]"></a>tListFirst</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, tlist.o(i.tListFirst))
@@ -511,14 +513,14 @@ Global Symbols
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelayedInit
 </UL>
 
-<P><STRONG><a name="[4c]"></a>tListRemove</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, tlist.o(i.tListRemove))
-<BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWakeUp
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
+<P><STRONG><a name="[52]"></a>tListRemove</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, tlist.o(i.tListRemove))
+<BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWakeUp
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
 </UL>
 
-<P><STRONG><a name="[55]"></a>tListRemoveFirst</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tlist.o(i.tListRemoveFirst))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWakeUp
+<P><STRONG><a name="[4f]"></a>tListRemoveFirst</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tlist.o(i.tListRemoveFirst))
+<BR><BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
 </UL>
 
@@ -526,7 +528,28 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskInit
 </UL>
 
-<P><STRONG><a name="[58]"></a>tSemInit</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, tsem.o(i.tSemInit))
+<P><STRONG><a name="[58]"></a>tSemDestroy</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, tsem.o(i.tSemDestroy))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = tSemDestroy &rArr; tEventRemoveAll &rArr; tTimeTaskWakeUp
+</UL>
+<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task4
+</UL>
+
+<P><STRONG><a name="[5a]"></a>tSemGetInfo</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, tsem.o(i.tSemGetInfo))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = tSemGetInfo &rArr; tEventWaitCount
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
+</UL>
+<BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task4
+</UL>
+
+<P><STRONG><a name="[5b]"></a>tSemInit</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, tsem.o(i.tSemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = tSemInit &rArr; tEventInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventInit
@@ -535,34 +558,13 @@ Global Symbols
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task1
 </UL>
 
-<P><STRONG><a name="[59]"></a>tSemNoWaitGet</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, tsem.o(i.tSemNoWaitGet))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = tSemNoWaitGet
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-</UL>
-<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task2
-</UL>
-
-<P><STRONG><a name="[5a]"></a>tSemNotify</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, tsem.o(i.tSemNotify))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = tSemNotify &rArr; tEventWakeUp &rArr; tTimeTaskWakeUp
-</UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWakeUp
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
-</UL>
-<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task2
-</UL>
-
 <P><STRONG><a name="[5c]"></a>tSemWait</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, tsem.o(i.tSemWait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = tSemWait &rArr; tEventWait &rArr; tTimeTaskWait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task3
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task1
@@ -577,11 +579,11 @@ Global Symbols
 <P><STRONG><a name="[5d]"></a>tTaskDelay</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ttime.o(i.tTaskDelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = tTaskDelay &rArr; tTaskSched &rArr; tTaskHighestReady &rArr; tBitmapGetFirstSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWait
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWait
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedUnRdy
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task4
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task3
@@ -598,29 +600,29 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4b]"></a>tTaskEnterCritical</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, switch.o(i.tTaskEnterCritical))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWakeUp
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemWait
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNotify
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNoWaitGet
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemGetInfo
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemDestroy
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 </UL>
 
-<P><STRONG><a name="[4d]"></a>tTaskExitCritical</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, switch.o(i.tTaskExitCritical))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWakeUp
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<P><STRONG><a name="[50]"></a>tTaskExitCritical</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, switch.o(i.tTaskExitCritical))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWaitCount
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemWait
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNotify
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNoWaitGet
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemGetInfo
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemDestroy
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 </UL>
 
 <P><STRONG><a name="[44]"></a>tTaskHighestReady</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, main.o(i.tTaskHighestReady))
@@ -629,7 +631,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListFirst
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tBitmapGetFirstSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -648,16 +650,16 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5b]"></a>tTaskSched</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, main.o(i.tTaskSched))
+<P><STRONG><a name="[59]"></a>tTaskSched</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, main.o(i.tTaskSched))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = tTaskSched &rArr; tTaskHighestReady &rArr; tBitmapGetFirstSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSwitch
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskHighestReady
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemWait
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNotify
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemDestroy
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
 </UL>
@@ -671,62 +673,62 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[57]"></a>tTaskSchedRdy</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.tTaskSchedRdy))
+<P><STRONG><a name="[4e]"></a>tTaskSchedRdy</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.tTaskSchedRdy))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = tTaskSchedRdy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddFirst
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tBitmapSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWakeUp
+<BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
 </UL>
 
-<P><STRONG><a name="[4f]"></a>tTaskSchedUnRdy</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.tTaskSchedUnRdy))
+<P><STRONG><a name="[54]"></a>tTaskSchedUnRdy</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.tTaskSchedUnRdy))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = tTaskSchedUnRdy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemove
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemove
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tBitmapClear
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 </UL>
 
 <P><STRONG><a name="[62]"></a>tTaskSwitch</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, switch.o(i.tTaskSwitch))
-<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 </UL>
 
 <P><STRONG><a name="[3e]"></a>tTaskSystemTickhandler</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, main.o(i.tTaskSystemTickhandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = tTaskSystemTickhandler &rArr; tTaskSched &rArr; tTaskHighestReady &rArr; tBitmapGetFirstSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskExitCritical
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskEnterCritical
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemoveFirst
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddLast
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWakeUp
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemoveFirst
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListCount
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddLast
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveTask
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTimeTaskWakeUp
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSchedRdy
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[51]"></a>tTimeTaskWait</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, main.o(i.tTimeTaskWait))
+<P><STRONG><a name="[56]"></a>tTimeTaskWait</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, main.o(i.tTimeTaskWait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = tTimeTaskWait
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddLast
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListAddLast
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
+<BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWait
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 </UL>
 
-<P><STRONG><a name="[56]"></a>tTimeTaskWakeUp</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.tTimeTaskWakeUp))
+<P><STRONG><a name="[4d]"></a>tTimeTaskWakeUp</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.tTimeTaskWakeUp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = tTimeTaskWakeUp
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemove
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tListRemove
 </UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventWakeUp
+<BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tEventRemoveAll
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskSystemTickhandler
 </UL>
 
@@ -734,18 +736,16 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = task1 &rArr; tSemWait &rArr; tEventWait &rArr; tTimeTaskWait
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemWait
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemInit
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemInit
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSetSysTickPeriod
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(i.tInitApp)
 </UL>
-<P><STRONG><a name="[28]"></a>task2</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, app.o(i.task2))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = task2 &rArr; tSemNotify &rArr; tEventWakeUp &rArr; tTimeTaskWakeUp
+<P><STRONG><a name="[28]"></a>task2</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, app.o(i.task2))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = task2 &rArr; tTaskDelay &rArr; tTaskSched &rArr; tTaskHighestReady &rArr; tBitmapGetFirstSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNotify
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemNoWaitGet
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
+<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(i.tInitApp)
 </UL>
@@ -753,15 +753,17 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = task3 &rArr; tSemWait &rArr; tEventWait &rArr; tTimeTaskWait
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemWait
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemInit
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemInit
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(i.tInitApp)
 </UL>
-<P><STRONG><a name="[2a]"></a>task4</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, app.o(i.task4))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = task4 &rArr; tTaskDelay &rArr; tTaskSched &rArr; tTaskHighestReady &rArr; tBitmapGetFirstSet
+<P><STRONG><a name="[2a]"></a>task4</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, app.o(i.task4))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = task4 &rArr; tSemDestroy &rArr; tEventRemoveAll &rArr; tTimeTaskWakeUp
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
+<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemGetInfo
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tSemDestroy
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tTaskDelay
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app.o(i.tInitApp)
 </UL><P>
