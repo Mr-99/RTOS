@@ -3,14 +3,6 @@
 
 #include "tLib.h"
 struct _tEvent;
-//定义错误码
-typedef enum _tError
-{
-  tErrorNoError = 0,
-  tErrorTimeout = 1,
-	tErrorResourceUnavaliable=2,
-	tErrorDel = 3,
-}tError;
 //枚举数据类型（是否延时状态）
 enum TINYOS_TASK_STATE
    {

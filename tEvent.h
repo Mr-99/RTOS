@@ -1,12 +1,21 @@
 #ifndef TEVENT_H
 #define TEVENT_H
-
 #include "tLib.h"
 #include "tTask.h"
 typedef enum _tEventType{
-tEventTypeUnknow = 0,
-tEventTypeSem = 2
+ tEventTypeUnknow = 0,
+ tEventTypeSem = 2,
+	tEventTypeMbox = 3,
 }tEventType;
+//∂®“Â¥ÌŒÛ¬Î
+typedef enum _tError
+{
+  tErrorNoError = 0,
+  tErrorTimeout = 1,
+	tErrorResourceUnavaliable=2,
+	tErrorDel = 3,
+	tErrorResourceFull,
+}tError;
 typedef struct _tEvent{
   tEventType type;
 	tList waitList;

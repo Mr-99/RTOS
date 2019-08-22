@@ -10,6 +10,8 @@
 #include "tEvent.h"
 #include "tTask.h"
 #include "tSem.h"
+//邮箱头文件
+#include "tMbox.h"
 
 // 当前任务：记录当前是哪个任务正在运行
 extern tTask *currentTask;

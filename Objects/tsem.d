@@ -6,3 +6,4 @@
 .\objects\tsem.o: tTask.h
 .\objects\tsem.o: thinyOS.h
 .\objects\tsem.o: tConfig.h
+.\objects\tsem.o: tMbox.h

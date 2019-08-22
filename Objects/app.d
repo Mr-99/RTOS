@@ -6,3 +6,4 @@
 .\objects\app.o: tEvent.h
 .\objects\app.o: tTask.h
 .\objects\app.o: tSem.h
+.\objects\app.o: tMbox.h

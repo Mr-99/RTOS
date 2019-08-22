@@ -456,6 +456,16 @@
               <FileType>1</FileType>
               <FilePath>.\tSem.c</FilePath>
             </File>
+            <File>
+              <FileName>tMbox.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\tMbox.h</FilePath>
+            </File>
+            <File>
+              <FileName>tMbox.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\tMbox.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -6,3 +6,4 @@
 .\objects\tevent.o: tEvent.h
 .\objects\tevent.o: tTask.h
 .\objects\tevent.o: tSem.h
+.\objects\tevent.o: tMbox.h
