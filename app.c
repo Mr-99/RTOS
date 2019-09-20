@@ -1,4 +1,6 @@
 #include "thinyOS.h"
+#include "tMenBlock.h"
+#include <string.h>
 /*包含与任务相关的核心数据*/
 tTask tTask1;
 tTask tTask2;
@@ -20,110 +22,97 @@ int task_flag4;
 //信号量
 tSem sem1;//定义第一个信号量
 tSem sem2;//定义第二个信号量
-//邮箱消息缓冲区
+//邮箱1消息缓冲区
 tMbox mbox1;
 void * mbox1MsgBuffer[20];//存放消息缓冲
-//邮箱消息缓冲区
-tMbox mbox2;
-void * mbox2MsgBuffer[20];//存放消息缓冲
-uint32_t msg[20];
+uint32_t msg1[20];
+//存储块操作
+typedef uint8_t (*tBlock)[100];
+uint8_t mem1[20][100];
+tMemBlock memBlock1;
+
+//事件标志组
+tFlagGroup flagGroup1;
+//互斥信号
+tMutex mutex;
 void task1DestroyFunc(void * param)
 {
  task_flag1 = 0;
 }
 void task1(void *para)
 {
+	uint8_t i;
+	uint8_t *mem;
+	tMutexInfo info;
 	tSetSysTickPeriod(10);//设置最小时间单位
-//  tSemInit(&sem1,0,10);
-//	tSemWait(&sem1,0);//等待车位空出来
-	tMboxInit(&mbox1,(void**)mbox1MsgBuffer,20);//初始化邮箱1
+	
+  tMutexInit(&mutex);//初始化互斥信号
+	tMutexWait(&mutex,0);
+	tTaskDelay(2);
+	
+	tMutexGetInfo(&mutex,&info);
+	
+	tMutexDestroy(&mutex);
+	
 	for(;;)
 	  { 
-			uint32_t i = 0;
-			for(i = 0;i<20; i++)
-			{
-			msg[i] = i;
-			tMboxNotify(&mbox1,&msg[i],tMBOXSendNormal);//送信到邮箱,普通方式
-			}
-			tTaskDelay(100);
-			for(i = 0;i<20; i++)
-			{
-			msg[i] = i;
-			tMboxNotify(&mbox1,&msg[i],tMBoxSendFront);//送信到邮箱
-			}
-			tTaskDelay(100);
+			tMutexWait(&mutex,0);
+			tMutexWait(&mutex,0);
+			
 			task_flag1 = 0;
-//tTaskSchedEnable();
-//			//模拟汇编过程（读-改-写入）
-//			temp = tickCounter;//读
-			  tTaskDelay(1);;//改（（如果不加临界区保护）在改的过程发生中断,最后写入会覆盖汇编操作）
-//			temp=3;
-//			tickCounter=temp;//写
-//			//end
-//tTaskSchedDisable();
+			tTaskDelay(1);;//改（（如果不加临界区保护）在改的过程发生中断,最后写入会覆盖汇编操作）
 			task_flag1 = 1;
 			tTaskDelay(1);
+			
+			tMutexNotify(&mutex);
+			tMutexNotify(&mutex);
 			
 		}
 
 }
 void task2(void *para)
 {
-	tError error;
+	int destroy = 0;
+	uint32_t resultFlags;
+	tFlagGroupInfo info;
+
+	tMutexWait(&mutex,0);
+	
 	for(;;)
 	  {
-       void *msg;
-			 uint32_t err = tMboxWait(&mbox1,&msg,14);//收信
-			 //等待完成后接着上次结束地方执行，不是从头开始
-			 if(err == tErrorNoError)
-			 {
-			  uint32_t value = *(uint32_t *)msg;
-				task_flag2 = value;
-				tTaskDelay(1);
-			 }
-//			task_flag2 = 0;
-//		  tTaskDelay(1);
-//			//tTaskWakeUp(&tTask1);
-//			task_flag2 = 1;
-//		  tTaskDelay(1);
-			//tTaskWakeUp(&tTask1);
-//     tSemNotify(&sem1);//释放一个资源
-//		 error = tSemNoWaitGet(&sem1);//无等待获取资源
+
+			task_flag2 = 0;
+		  tTaskDelay(1);
+			task_flag2 = 1;
+		  tTaskDelay(1);
+						
+			tMutexNotify(&mutex);
+			tMutexNotify(&mutex);
+//			 if(!destroy)
+//				 {
+//					 tMemBlockDestroy(&memBlock1);
+//					 destroy = 1;
+//				 }
 	  }
 }
 void task3(void *para)
 {
-	tSemInit(&sem2,0,0);
-	tMboxInit(&mbox2,(void**)mbox2MsgBuffer,20);//初始化邮箱2
 	for(;;)
 	  {
-			void * msg;
-			tMboxWait(&mbox2,&msg,100);
-      tSemWait(&sem2,10);
 			task_flag3 = 0;
 			tTaskDelay(1);
 			task_flag3 = 1;
 		  tTaskDelay(1);
-
 	  }
 }
 void task4(void *para)
 {
-	tSemInfo semInfo;
-	int destroyed = 0;
 	for(;;)
 	  {
-
 			task_flag4 = 0;
 			tTaskDelay(1);
 			task_flag4 = 1;
 		  tTaskDelay(1);
-			if(!destroyed)//如果没有被删除
-			{
-			tSemGetInfo(&sem1,&semInfo);
-			tSemDestroy(&sem1);
-			destroyed = 1;//设置删除标记
-			}
 	  }
 }
 void tInitApp(void)

@@ -7,3 +7,7 @@
 .\objects\app.o: tTask.h
 .\objects\app.o: tSem.h
 .\objects\app.o: tMbox.h
+.\objects\app.o: tFlagGroup.h
+.\objects\app.o: tMutex.h
+.\objects\app.o: tMenBlock.h
+.\objects\app.o: D:\Program FilesKeil_v5\ARM\ARMCC\Bin\..\include\string.h

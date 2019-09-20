@@ -100,3 +100,36 @@ uint32_t tMboxNotify(tMbox * mbox,void * msg,uint32_t notifyOption)
 		tTaskExitCritical(status);
 		return tErrorNoError;
 }
+//
+void tMboxFlush(tMbox * mbox)
+{
+   uint32_t status = tTaskEnterCritical();
+	 if(tEventWaitCount(&mbox->event) == 0)
+	 {
+	  mbox->read = 0;
+	  mbox->write = 0;
+	  mbox->count = 0;
+	 }
+	 tTaskExitCritical(status);
+}
+//@删除邮箱
+uint32_t tMboxDestroy(tMbox * mbox)
+{
+   uint32_t status = tTaskEnterCritical();
+	 uint32_t count = tEventRemoveAll(&mbox->event,(void *)0,tErrorDel);
+	 tTaskExitCritical(status);
+	 if(count > 0)
+	 {
+	     tTaskSched();
+	 }
+	 return count;
+}
+//@获取消息
+void tMboxGetInfo(tMbox * mbox,tMboxInfo * info)
+{
+   uint32_t status = tTaskEnterCritical();
+	  info->count = mbox->count;
+	  info->maxCount = mbox->maxCount;
+	  info->taskCount = tEventWaitCount(&mbox->event);
+	 tTaskExitCritical(status);
+}

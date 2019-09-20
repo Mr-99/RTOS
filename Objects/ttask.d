@@ -7,3 +7,5 @@
 .\objects\ttask.o: tTask.h
 .\objects\ttask.o: tSem.h
 .\objects\ttask.o: tMbox.h
+.\objects\ttask.o: tFlagGroup.h
+.\objects\ttask.o: tMutex.h

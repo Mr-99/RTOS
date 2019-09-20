@@ -420,12 +420,12 @@ ARM Macro Assembler    Page 7
               00000C00 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
-ork --depend=.\objects\startup_armcm4.d -o.\objects\startup_armcm4.o -I.\RTE\_T
-arget_1 -I"D:\Program FilesKeil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include" -I"D
-:\Program FilesKeil_v5\ARM\PACK\ARM\CMSIS\4.2.0\Device\ARM\ARMCM4\Include" --pr
-edefine="__UVISION_VERSION SETA 525" --predefine="_RTE_ SETA 1" --predefine="AR
-MCM4 SETA 1" --list=.\listings\startup_armcm4.lst RTE\Device\ARMCM4\startup_ARM
-CM4.s
+ork --depend=.\objects\startup_armcm4.d -o.\objects\startup_armcm4.o -IF:\desk\
+NewTechnology\Alog_znFAT_RTOS\RT_OS\RTOS\RTE -I"D:\Program FilesKeil_v5\ARM\PAC
+K\ARM\CMSIS\4.2.0\CMSIS\Include" -I"D:\Program FilesKeil_v5\ARM\PACK\ARM\CMSIS\
+4.2.0\Device\ARM\ARMCM4\Include" --predefine="__UVISION_VERSION SETA 514" --pre
+define="_RTE_ SETA 1" --predefine="ARMCM4 SETA 1" --list=.\listings\startup_arm
+cm4.lst RTE\Device\ARMCM4\startup_ARMCM4.s
 
 
 

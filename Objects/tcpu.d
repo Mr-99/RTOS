@@ -7,6 +7,8 @@
 .\objects\tcpu.o: tTask.h
 .\objects\tcpu.o: tSem.h
 .\objects\tcpu.o: tMbox.h
+.\objects\tcpu.o: tFlagGroup.h
+.\objects\tcpu.o: tMutex.h
 .\objects\tcpu.o: D:\Program FilesKeil_v5\ARM\PACK\ARM\CMSIS\4.2.0\Device\ARM\ARMCM4\Include\ARMCM4.h
 .\objects\tcpu.o: D:\Program FilesKeil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
 .\objects\tcpu.o: D:\Program FilesKeil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h

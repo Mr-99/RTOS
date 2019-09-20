@@ -4,8 +4,11 @@
 #include "tTask.h"
 typedef enum _tEventType{
  tEventTypeUnknow = 0,
- tEventTypeSem = 2,
-	tEventTypeMbox = 3,
+ tEventTypeSem = 1,
+	tEventTypeMbox = 2,
+	tEventTypeMemBlock,
+	tEventTypeFlagGroup,
+	tEventTypeMutex,
 }tEventType;
 //定义错误码
 typedef enum _tError
@@ -15,6 +18,7 @@ typedef enum _tError
 	tErrorResourceUnavaliable=2,
 	tErrorDel = 3,
 	tErrorResourceFull,
+	tErrorOwner,
 }tError;
 typedef struct _tEvent{
   tEventType type;
@@ -31,4 +35,6 @@ void tEventRemoveTask(tTask *task,void *msg,uint32_t result);
 uint32_t tEventRemoveAll(tEvent *event,void *msg,uint32_t result);
 //@计算事件中有多少个任务
 uint32_t tEventWaitCount(tEvent * event);
+//@从事件控制块中唤醒指定任务
+void tEventWakeUpTask (tEvent * event, tTask * task, void * msg, uint32_t result);
 #endif

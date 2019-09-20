@@ -7,3 +7,5 @@
 .\objects\tsem.o: thinyOS.h
 .\objects\tsem.o: tConfig.h
 .\objects\tsem.o: tMbox.h
+.\objects\tsem.o: tFlagGroup.h
+.\objects\tsem.o: tMutex.h

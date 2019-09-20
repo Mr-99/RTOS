@@ -1,4 +1,4 @@
---cpu=Cortex-M4 --fpu=SoftVFP
+--cpu Cortex-M4
 ".\objects\main.o"
 ".\objects\switch.o"
 ".\objects\tbitmap.o"
@@ -10,9 +10,12 @@
 ".\objects\tevent.o"
 ".\objects\tsem.o"
 ".\objects\tmbox.o"
+".\objects\tmenblock.o"
+".\objects\tflaggroup.o"
+".\objects\tmutex.o"
 ".\objects\startup_armcm4.o"
 ".\objects\system_armcm4.o"
 --strict --scatter ".\Objects\RTOS.sct"
---summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\RTOS.map" -o .\Objects\RTOS.axf
